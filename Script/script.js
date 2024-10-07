@@ -25,3 +25,15 @@ fetch("../Templates/navbar.html")
             nav.prepend(element);
         })
     })
+
+fetch("../Templates/footer.html")
+    .then(response => response.text())
+    .then(data => {
+        const nav = document.body;
+        const div = document.createElement("div");
+        div.innerHTML = data.trim();
+
+        Array.from(div.children).forEach(element => {
+            nav.appendChild(element);
+        })
+    })

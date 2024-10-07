@@ -14,3 +14,17 @@ a:hover {
 input:invalid {
     background-color: red;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.nav {
+    height: 80px;
+    display: flex;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: darkgreen;
+}

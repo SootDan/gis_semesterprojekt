@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<head>
-    <script src="Script/script.js" defer></script>
-</head>
+<script src="Script/script.js" defer></script>
+<script src="Script/language_handler.js" defer></script>
 
 <body>
     <div login>
         <form id="login">
-            <label style="display: inline-block; width: 20%;">Datenbank: </label>
-            <input type="text" name="db" style="width: 200px" placeholder="Datenbank..."/> </br>
-            <label style="display: inline-block" for="password">Passwort: </label>
-            <input type="password" name="pw" style="display: inline-block; width: 200px" placeholder="Passwort..." minlength="3" maxlength="16"/></br>
-            <button type="submit" id="login">LogIn</button>
+            <table>
+                <tr>
+                    <td data-il8n="databank"></td>
+                    <td>
+                        <input type="text" name="db" placeholder="Datenbank..."/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Passwort: </td>
+                    <td>
+                        <input type="password" name="pw" placeholder="Passwort..." minlength="3" maxlength="16"/>
+                    </td>
+                </tr>
+            </table>
         </form>
-        <p>Noch keine Datenbank? Erstellen Sie eine <a href="register.html">hier.</a></p>
+        Noch keine Datenbank? Erstellen Sie eine <a href="register.html">hier.</a>
     </div>
 </body>
-
-<footer>
-
-</footer>
