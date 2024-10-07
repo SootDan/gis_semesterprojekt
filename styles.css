@@ -1,9 +1,16 @@
-.header {
-    text-align: center;
+:root {
+    background-color: black;
     color: beige;
 }
 
-body {
-    color: beige;
-    background-color: black;
+.header {
+    text-align: center;
+}
+
+a:hover {
+    color: lime;
+}
+
+input:invalid {
+    background-color: red;
 }

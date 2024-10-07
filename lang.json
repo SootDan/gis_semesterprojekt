@@ -1,11 +1,21 @@
 {
     "enUS": {
         "databank": "Databank",
-        "password": "Password"
+        "password": "Password",
+        "prompt_register": "No databank yet? Create one ",
+
+        "settings": {
+            "language": "Language"
+        }
     },
     
     "deDE": {
         "databank": "Datenbank",
-        "password": "Passwort"
+        "password": "Passwort",
+        "prompt_register": "Noch keine Datenbank? Erstellen Sie eine ",
+
+        "settings": {
+            "language": "Sprache"
+        }
     }
 }
