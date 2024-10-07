@@ -1,0 +1,11 @@
+{
+    "enUS": {
+        "databank": "Databank",
+        "password": "Password"
+    },
+    
+    "deDE": {
+        "databank": "Datenbank",
+        "password": "Passwort"
+    }
+}
