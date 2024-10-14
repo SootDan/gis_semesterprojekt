@@ -25,3 +25,8 @@ Nach diesem Prozess wird der User auf den Login-Screen weitergeleitet, wo dieser
 Sobald der User seine Datenbank betritt, werden einem die Statistiken der gewählten Fächer und Interessen gezeigt. Der User kann mit einem Klick auf das jeweilige Fach den Namen und die (evtl. noch nicht vorhandene) Deadline editieren. Ebenso kann der User zusätzliche Zeit hinzufügen.  
 ![Das Interface](Assets/InterfaceScreen.png)
 Wenn der User dies will, zeigt StudyTime auch einen "Streak" an, wie viele Tage er hintereinander gelernt hat.  
+
+## Quellen
+[Farbenpalette](https://nightpalette.com/)  
+[Free Icons](https://iconoir.com/)
+[Flaggen (WhatsApp-Version)](https://emojipedia.org/)
