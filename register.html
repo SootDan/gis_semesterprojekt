@@ -1,2 +1,34 @@
 <!--TODO: Add register page-->
 <script src="Script/script.js" defer></script>
+
+<body>
+    <h3>Willkommen bei StudyTime, neuer Nutzer!</h3>
+    StudyTime ist eine Datenbank, die du zum Produktivitaetsmanagement anwenden kannst. </br>
+    Waehle einen Namen fuer ein Fach aus und die Zeit, die du lernen moechtest. Du kannst optional auch eine Deadline setzen. Wenn du keine haben willst (oder noch keine kennst), waehle "N/A" aus.
+    </br>
+
+    <form id="register" action="login.html">
+        <table>
+            <thead>
+                <th>Subjekt</th>
+                <th>Zeit (in Stunden)</th>
+                <th>Deadline</th>
+            </thead>
+            <tbody>
+                <!-- TODO: Implement JS that adds a new field every time -->
+                <tr>
+                    <td>
+                        <input type="text" id="subj_name">
+                    </td>
+                    <td>
+                        <input type="number" id="subj_req_time">
+                    </td>
+                    <td>
+                        <input type="date" id="subj_deadline">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="It's StudyTime!">
+    </form>
+</body>

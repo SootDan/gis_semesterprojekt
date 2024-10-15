@@ -28,5 +28,6 @@ Wenn der User dies will, zeigt StudyTime auch einen "Streak" an, wie viele Tage 
 
 ## Quellen
 [Farbenpalette](https://nightpalette.com/)  
-[Free Icons](https://iconoir.com/)
-[Flaggen (WhatsApp-Version)](https://emojipedia.org/)
+[Free Icons](https://iconoir.com/)  
+[Flaggen (WhatsApp-Version)](https://emojipedia.org/)  
+[StudyTime Logo](https://www.flaticon.com/)
