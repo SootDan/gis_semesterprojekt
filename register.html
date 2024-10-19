@@ -9,10 +9,62 @@
 
     <form id="register" action="login.html">
         <table>
+            <tr>
+                <th>Datenbank</th>
+                <td><input type="text" id="db_name"></td>
+                <td>
+                    <div class="tooltip_helper">
+                        <input type="button" value="?" class="register_help">
+                        <span class="tooltip">TODO: Tooltip einfuegen </br>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Passwort</th>
+                <td><input type="password" id="db_pw"></td>
+                <td>
+                    <div class="tooltip_helper">
+                        <input type="button" value="?" class="register_help">
+                        <span class="tooltip">TODO: Tooltip einfuegen </br>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Passwort wiederholen</th>
+                <td><input type="password" id="db_pw_repeat"></td>
+            </tr>
+        </table>
+
+        </br>
+        <hr>
+        </br>
+
+        <!-- TODO: Hide this table until upper form is filled out and validated -->
+        <table>
             <thead>
-                <th>Subjekt</th>
-                <th>Zeit (in Stunden)</th>
-                <th>Deadline</th>
+                <th>Subjekt
+                    <div class="tooltip_helper">
+                        <input type="button" value="?" class="register_help">
+                        <span class="tooltip">TODO: Tooltip einfuegen </br>
+                        </span>
+                    </div>
+                </th>
+                <th>Zeit (in Stunden)
+                    <div class="tooltip_helper">
+                        <input type="button" value="?" class="register_help">
+                        <span class="tooltip">TODO: Tooltip einfuegen </br>
+                        </span>
+                    </div>
+                </th>
+                <th>Deadline
+                    <div class="tooltip_helper">
+                        <input type="button" value="?" class="register_help">
+                        <span class="tooltip">TODO: Tooltip einfuegen </br>
+                        </span>
+                    </div>
+                </th>
             </thead>
             <tbody>
                 <!-- TODO: Implement JS that adds a new field every time -->
@@ -29,6 +81,9 @@
                 </tr>
             </tbody>
         </table>
+        
+        </br>
+
         <input type="submit" value="It's StudyTime!">
     </form>
 </body>

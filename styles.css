@@ -45,12 +45,51 @@ footer {
     margin-left: auto;
 }
 
+
+
 table {
     margin-left: auto;
     margin-right: auto;
 }
 
+
 .content {
     text-align: center;
-    padding: 1%;;
+    max-width: 80%;
+    padding: 1%;   
+}
+
+
+/* Interactive Elements */
+input[type=submit], input[type=button], select, option {
+    background-color: #bed3fa;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+input[type=submit]:hover {
+    background-color: aqua;
+    transform: translateY(-1px);
+}
+
+
+/* Tooltips */
+.tooltip_helper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    visibility: hidden;
+    z-index: 1;
+    bottom: 5%;
+    background-color: #191E29;
+}
+
+.tooltip_helper:hover .tooltip {
+    visibility: visible;
 }
