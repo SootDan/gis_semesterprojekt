@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("templates/head") %>
+    <body>
+        <%- include("templates/navbar") %>
+        <div class="header">
+            <p><h1>Welcome to StudyTime! Select a language.</h1></p>
+            <p><h3>Willkommen zu StudyTime! Waehlen Sie eine Sprache aus.</h3></p>
+        </div>
+
+        <div>
+            <table>
+                <th>
+                    <form action="/login" id="select_lang">
+                        <input type="image" src="/images/US.png" alt="English">
+                    </form>
+                </th>
+                <th> 
+                    <form action="/login" id="select_lang">
+                        <input type="image" src="images/DE.png" alt="German">
+                    </form>
+                </th>
+                <tbody style="text-align: center;">
+                    <td>English</td>
+                    <td>German</td>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <%- include("templates/footer") %>
+</html>
+<script src="Script/script.js" defer></script>

@@ -43,6 +43,8 @@ footer {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
+    filter: invert(1);
+    scale: 1.5;
 }
 
 

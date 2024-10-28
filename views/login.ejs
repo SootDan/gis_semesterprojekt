@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <script src="Script/script.js" defer></script>
 <script src="Script/language_handler.js" defer></script>
-
+<%- include("templates/head") %>
 <body>
+    <%- include("templates/navbar") %>
     <div class="content">
-        <form id="login" action="/landing.html">
+        <form id="login" action="/landing">
             <table>
                 <tr>
                     <td data-il8n="databank">Datenbank: </td>
@@ -22,6 +23,7 @@
                     <td><input type="submit" value="Einloggen"></td></tr>
             </table>
         </form>
-        Noch keine Datenbank? Erstellen Sie eine <a href="register.html">hier.</a>
+        Noch keine Datenbank? Erstellen Sie eine <a href="/register">hier.</a>
     </div>
 </body>
+<%- include("templates/footer") %>

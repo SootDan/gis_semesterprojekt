@@ -1,3 +1,4 @@
-Test/
+node_modules/
+
 code.code-workspace
 *.png~
