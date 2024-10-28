@@ -1,92 +1,92 @@
-<!--TODO: Add register page-->
-<script src="Script/script.js" defer></script>
-<%- include("templates/head") %>
-<%- include("templates/navbar") %>
-<body class>
-    <div class="content">
-        <h3>Willkommen bei StudyTime, neuer Nutzer!</h3>
-        StudyTime ist eine Datenbank, die du zum Produktivitaetsmanagement anwenden kannst. </br>
-        Waehle einen Namen fuer ein Fach aus und die Zeit, die du lernen moechtest. Du kannst optional auch eine Deadline setzen. Wenn du keine haben willst (oder noch keine kennst), waehle "N/A" aus.
-        </br>
-
-        <form id="register" action="/login">
-            <table>
-                <tr>
-                    <th>Datenbank</th>
-                    <td><input type="text" id="db_name"></td>
-                    <td>
-                        <div class="tooltip_helper">
-                            <input type="button" value="?" class="register_help">
-                            <span class="tooltip">TODO: Tooltip einfuegen </br>
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Passwort</th>
-                    <td><input type="password" id="db_pw"></td>
-                    <td>
-                        <div class="tooltip_helper">
-                            <input type="button" value="?" class="register_help">
-                            <span class="tooltip">TODO: Tooltip einfuegen </br>
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Passwort wiederholen</th>
-                    <td><input type="password" id="db_pw_repeat"></td>
-                </tr>
-            </table>
-
-            </br>
-            <hr>
+<html lang="en">
+    <%- include("templates/head") %>
+    <body>
+        <%- include("templates/navbar") %>
+        <div class="content">
+            <h3>Willkommen bei StudyTime, neuer Nutzer!</h3>
+            StudyTime ist eine Datenbank, die du zum Produktivitaetsmanagement anwenden kannst. </br>
+            Waehle einen Namen fuer ein Fach aus und die Zeit, die du lernen moechtest. Du kannst optional auch eine Deadline setzen. Wenn du keine haben willst (oder noch keine kennst), waehle "N/A" aus.
             </br>
 
-            <!-- TODO: Hide this table until upper form is filled out and validated -->
-            <table>
-                <thead>
-                    <th>Subjekt
-                        <div class="tooltip_helper">
-                            <input type="button" value="?" class="register_help">
-                            <span class="tooltip">TODO: Tooltip einfuegen </br>
-                            </span>
-                        </div>
-                    </th>
-                    <th>Zeit (in Stunden)
-                        <div class="tooltip_helper">
-                            <input type="button" value="?" class="register_help">
-                            <span class="tooltip">TODO: Tooltip einfuegen </br>
-                            </span>
-                        </div>
-                    </th>
-                    <th>Deadline
-                        <div class="tooltip_helper">
-                            <input type="button" value="?" class="register_help">
-                            <span class="tooltip">TODO: Tooltip einfuegen </br>
-                            </span>
-                        </div>
-                    </th>
-                </thead>
-                <tbody>
-                    <!-- TODO: Implement JS that adds a new field every time -->
+            <form id="register" action="/login">
+                <table>
                     <tr>
+                        <th>Datenbank</th>
+                        <td><input type="text" id="db_name"></td>
                         <td>
-                            <input type="text" id="subj_name">
-                        </td>
-                        <td>
-                            <input type="number" id="subj_req_time">
-                        </td>
-                        <td>
-                            <input type="date" id="subj_deadline">
+                            <div class="tooltip_helper">
+                                <input type="button" value="?" class="register_help">
+                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                </span>
+                            </div>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            
-            </br>
+                    <tr>
+                        <th>Passwort</th>
+                        <td><input type="password" id="db_pw"></td>
+                        <td>
+                            <div class="tooltip_helper">
+                                <input type="button" value="?" class="register_help">
+                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Passwort wiederholen</th>
+                        <td><input type="password" id="db_pw_repeat"></td>
+                    </tr>
+                </table>
 
-            <input type="submit" value="It's StudyTime!">
-        </form>
-    </div>
-</body>
+                </br>
+                <hr>
+                </br>
+
+                <!-- TODO: Hide this table until upper form is filled out and validated -->
+                <table>
+                    <thead>
+                        <th>Subjekt
+                            <div class="tooltip_helper">
+                                <input type="button" value="?" class="register_help">
+                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                </span>
+                            </div>
+                        </th>
+                        <th>Zeit (in Stunden)
+                            <div class="tooltip_helper">
+                                <input type="button" value="?" class="register_help">
+                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                </span>
+                            </div>
+                        </th>
+                        <th>Deadline
+                            <div class="tooltip_helper">
+                                <input type="button" value="?" class="register_help">
+                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                </span>
+                            </div>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Implement JS that adds a new field every time -->
+                        <tr>
+                            <td>
+                                <input type="text" id="subj_name">
+                            </td>
+                            <td>
+                                <input type="number" id="subj_req_time">
+                            </td>
+                            <td>
+                                <input type="date" id="subj_deadline">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                </br>
+
+                <input type="submit" value="It's StudyTime!">
+            </form>
+        </div>
+    </body>
+</html>

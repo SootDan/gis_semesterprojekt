@@ -1,37 +1,37 @@
-<!-- TODO: Add settings page-->
 <!DOCTYPE html>
-<script src="Script/script.js" defer></script>
-<%- include("templates/head") %>
-<%- include("templates/navbar") %>
-<body class>
-   <div class="content">
-        <table>
-            <thead>
-                <th>
-                    Sprache
-                </th>
-                <th>
-                    Zeitformat
-                </th>
-            </thead>
-            <tbody>
-                <form id="settings" action="landing">
-                    <td>
-                        <select name="Sprache" id="settings_lang">
-                            <option value="DE">Deutsch</option>
-                            <option value="US">English</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="Zeitformat" id="settings_time_format">
-                            <option value="DMY">DD.MM.YY</option>
-                            <option value="MDY">MM/DD/YY</option>
-                        </select>
-                    </td>
-                </tbody>
-            </table>
-            <input type="submit" id="settings_save" value="Settings speichern">
-        </form>
-    </div>
-    <%- include("templates/footer") %>
-</body>
+<html lang="en">
+    <%- include("templates/head") %>
+    <body>
+        <%- include("templates/navbar") %>
+    <div class="content">
+            <table>
+                <thead>
+                    <th>
+                        Sprache
+                    </th>
+                    <th>
+                        Zeitformat
+                    </th>
+                </thead>
+                <tbody>
+                    <form id="settings" action="landing">
+                        <td>
+                            <select name="Sprache" id="settings_lang">
+                                <option value="DE">Deutsch</option>
+                                <option value="US">English</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="Zeitformat" id="settings_time_format">
+                                <option value="DMY">DD.MM.YY</option>
+                                <option value="MDY">MM/DD/YY</option>
+                            </select>
+                        </td>
+                    </tbody>
+                </table>
+                <input type="submit" id="settings_save" value="Settings speichern">
+            </form>
+        </div>
+        <%- include("templates/footer") %>
+    </body>
+</html>

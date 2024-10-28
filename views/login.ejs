@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<script src="Script/script.js" defer></script>
-<script src="Script/language_handler.js" defer></script>
-<%- include("templates/head") %>
-<body>
-    <%- include("templates/navbar") %>
-    <div class="content">
-        <form id="login" action="/landing">
-            <table>
-                <tr>
-                    <td data-il8n="databank">Datenbank: </td>
-                    <td>
-                        <input type="text" name="db" placeholder="Datenbank..."/>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-il8n="password">Passwort: </td>
-                    <td>
-                        <input type="password" name="pw" placeholder="Passwort..." minlength="3" maxlength="16"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Einloggen"></td></tr>
-            </table>
-        </form>
-        Noch keine Datenbank? Erstellen Sie eine <a href="/register">hier.</a>
-    </div>
-</body>
-<%- include("templates/footer") %>
+<html lang="en">
+    <%- include("templates/head") %>
+    <body>
+        <%- include("templates/navbar") %>
+        <div class="content">
+            <form id="login" action="/landing">
+                <table>
+                    <tr>
+                        <td data-il8n="databank">Datenbank: </td>
+                        <td>
+                            <input type="text" name="db" placeholder="Datenbank..."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-il8n="password">Passwort: </td>
+                        <td>
+                            <input type="password" name="pw" placeholder="Passwort..." minlength="3" maxlength="16"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Einloggen"></td></tr>
+                </table>
+            </form>
+            Noch keine Datenbank? Erstellen Sie eine <a href="/register">hier.</a>
+        </div>
+        <%- include("templates/footer") %>
+    </body>
+</html>
