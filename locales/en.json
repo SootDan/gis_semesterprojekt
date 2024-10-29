@@ -1,5 +1,24 @@
 {
-    "databank": "Databank",
-    "password": "Password",
-    "prompt_register": "No databank yet? Create one "
+	"databank": "Databank",
+	"password": "Password",
+	"password_repeat": "Repeat Password",
+	"login": "LogIn",
+	"prompt_register": "No databank yet? Create one ",
+	"prompt_register_link": "here.",
+	"welcome": "welcome",
+	"register_welcome": "Welcome to StudyTime, new User!",
+	"register_description": "StudyTime is a databank you can use to manage your own productivity.\nChoose a subject and the time you want to spend studying for it with an optional deadline. If you don't want one (or don't have one yet), choose \"N/A\".",
+	"subject": "Subject",
+	"time": "Time",
+	"hours": "Hours",
+	"deadline": "Deadline",
+	"options_language": "Language",
+	"options_time_format": "Time Formatting",
+	"footer_cookies": "Delete Cookies",
+	"settings_save": "Save Settings",
+	"day": "Day",
+	"week": "Week",
+	"month": "Month",
+	"greeting_morning": "Good Morning",
+	"time_spent_studying": "Studied Time"
 }

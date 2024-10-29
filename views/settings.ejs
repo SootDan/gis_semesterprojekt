@@ -7,29 +7,29 @@
             <table>
                 <thead>
                     <th>
-                        Sprache
+                        <%=__("options_language") %>
                     </th>
                     <th>
-                        Zeitformat
+                        <%=__("options_time_format") %>
                     </th>
                 </thead>
                 <tbody>
                     <form id="settings" action="landing">
                         <td>
-                            <select name="Sprache" id="settings_lang">
+                            <select id="settings_lang">
                                 <option value="DE">Deutsch</option>
                                 <option value="US">English</option>
                             </select>
                         </td>
                         <td>
-                            <select name="Zeitformat" id="settings_time_format">
+                            <select id="settings_time_format">
                                 <option value="DMY">DD.MM.YY</option>
                                 <option value="MDY">MM/DD/YY</option>
                             </select>
                         </td>
                     </tbody>
                 </table>
-                <input type="submit" id="settings_save" value="Settings speichern">
+                <input type="submit" id="settings_save" value="<%=__('settings_save') %>">
             </form>
         </div>
         <%- include("templates/footer") %>

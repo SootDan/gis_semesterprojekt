@@ -3,16 +3,14 @@
     <body>
         <%- include("templates/navbar") %>
         <div class="content">
-            <h3>Willkommen bei StudyTime, neuer Nutzer!</h3>
-            StudyTime ist eine Datenbank, die du zum Produktivitaetsmanagement anwenden kannst. </br>
-            Waehle einen Namen fuer ein Fach aus und die Zeit, die du lernen moechtest. Du kannst optional auch eine Deadline setzen. Wenn du keine haben willst (oder noch keine kennst), waehle "N/A" aus.
-            </br>
+            <h3><%=__("register_welcome") %></h3>
+            <%=__("register_description") %>
 
             <form id="register" action="/login">
                 <table>
                     <tr>
-                        <th>Datenbank</th>
-                        <td><input type="text" id="db_name"></td>
+                        <th><%=__("databank") %></th>
+                        <td><input type="text" id="db_name" placeholder="<%=__('databank') %>..."></td>
                         <td>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
@@ -22,8 +20,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Passwort</th>
-                        <td><input type="password" id="db_pw"></td>
+                        <th><%=__("password") %></th>
+                        <td><input type="password" id="db_pw" placeholder="<%=__('password') %>..."></td>
                         <td>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
@@ -33,8 +31,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Passwort wiederholen</th>
-                        <td><input type="password" id="db_pw_repeat"></td>
+                        <th><%=__("password_repeat") %></th>
+                        <td><input type="password" id="db_pw_repeat" placeholder="<%=__('password') %>..."></td>
                     </tr>
                 </table>
 
@@ -45,14 +43,14 @@
                 <!-- TODO: Hide this table until upper form is filled out and validated -->
                 <table>
                     <thead>
-                        <th>Subjekt
+                        <th><%=__("subject") %>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
                                 <span class="tooltip">TODO: Tooltip einfuegen </br>
                                 </span>
                             </div>
                         </th>
-                        <th>Zeit (in Stunden)
+                        <th><%=__("time") %> (in <%=__("hours") %>)
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
                                 <span class="tooltip">TODO: Tooltip einfuegen </br>

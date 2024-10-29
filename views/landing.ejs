@@ -4,27 +4,27 @@
     <body>
         <%- include("templates/navbar") %>
         <!--TODO: Add JS to detect time of day and have dynamic greeting -->
-        <h3>Guten Morgen, %user!</h2>
+        <h3><%=__("greeting_morning") %>, %user!</h2>
         
             <table>
                 <thead>
                     <th>
-                        Subjekt
+                        <%=__("subject") %>
                     </th>
                     <th>
-                        Stunden
+                        <%=__("hours") %>
                     </th>
                     <th>
-                        Lernzeit
+                        <%=__("time_spent_studying") %>
                     </th>
                     <th>
-                        Stunden / Tag
+                        <%=__("hours") %> / <%=__("day") %>
                     </th>
                     <th>
-                        Stunden / Woche
+                        <%=__("hours") %> / <%=__("week") %>
                     </th>
                     <th>
-                        Stunden / Monat
+                        <%=__("hours") %> / <%=__("month") %>
                     </th>
                     <th>
                         Deadline

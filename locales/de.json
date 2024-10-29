@@ -1,5 +1,25 @@
 {
-    "databank": "Datenbank",
-    "password": "Passwort",
-    "prompt_register": "Noch keine Datenbank? Erstellen Sie eine "
+	"databank": "Datenbank",
+	"password": "Passwort",
+	"password_repeat": "Passwort wiederholen",
+	"login": "Einloggen",
+	"prompt_register": "Noch keine Datenbank? Erstellen Sie eine ",
+	"prompt_register_link": "hier.",
+	"welcome": "welcome",
+	"register_welcome": "Willkommen bei StudyTime, neuer Nutzer!",
+	"register_description": "StudyTime ist eine Datenbank, die du zum Produktivitaetsmanagement anwenden kannst.\nWaehle einen Namen fuer ein Fach aus und die Zeit, die du lernen moechtest. Du kannst optional auch eine Deadline setzen. Wenn du keine haben willst (oder noch keine kennst), waehle \"N/A\" aus.",
+	"subject": "Subjekt",
+	"time": "Zeit",
+	"hours": "Stunden",
+	"deadline": "Deadline",
+	"options_language": "Sprache",
+	"options_time_format": "Zeitformat",
+	"footer_cookies": "Cookies loeschen",
+	"options_time_formatting": "options_time_formatting",
+	"settings_save": "Settings speichern",
+	"day": "Tag",
+	"week": "Woche",
+	"month": "Monat",
+	"greeting_morning": "Guten Morgen",
+	"time_spent_studying": "Lernzeit"
 }
