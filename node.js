@@ -22,25 +22,29 @@ app.use(i18n.init);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-app.use((req, res, next) => {
-    const lang = req.cookies.language;
-    res.setLocale(lang);
-    next()
-})
-
 app.get("/locale/:lang", (req, res) => {
-    res.cookie("language", req.params.lang);
+    res.cookie("language", req.params.lang, { maxAge: 900000});
     res.setLocale(req.params.lang);
     res.redirect("/login");
 });
 
 // Renders all pages in array
-const pages = ["", "login", "settings",
-    "register", "landing"];
+const pages = ["login", "settings",
+    "landing"];
 pages.forEach(page => {
     app.get(`/${page}`, (req, res) =>
-        (page == "") ? res.render("index") : res.render(page));
+        res.render(page));
 });
+
+app.get("/", (req, res) => {
+    if (res.getLocale() == "en")
+        return res.redirect("login");
+    res.render("index");
+})
+
+app.get("/register", (req, res) => {
+    res.render("register", { scriptPath: "/scripts/register.js"});
+})
 
 // Create website
 app.listen(port, () => {

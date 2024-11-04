@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html lang="en">
     <%- include("templates/head") %>
     <body>
+        <script src="<%= scriptPath %>" defer></script>
         <%- include("templates/navbar") %>
         <div class="content">
             <h3><%=__("register_welcome") %></h3>
@@ -21,7 +23,7 @@
                     </tr>
                     <tr>
                         <th><%=__("password") %></th>
-                        <td><input type="password" id="db_pw" placeholder="<%=__('password') %>..."></td>
+                        <td><input type="password" id="db_pw" placeholder="<%=__('password') %>..." minlength="3"></td>
                         <td>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
