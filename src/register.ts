@@ -1,17 +1,17 @@
-let db_name = document.getElementById("db_name");
+let db_name: HTMLInputElement = document.getElementById("db_name") as HTMLInputElement;
 db_name.addEventListener("keydown", onKeyDown);
 
-let db_pw = document.querySelector("#db_pw");
+let db_pw: HTMLInputElement = document.querySelector("#db_pw") as HTMLInputElement;
 db_pw.addEventListener("keydown", onKeyDown);
 
-let db_pw_repeat = document.getElementById("db_pw_repeat");
+let db_pw_repeat: HTMLInputElement = document.getElementById("db_pw_repeat") as HTMLInputElement;
 db_pw_repeat.addEventListener("keydown", onKeyDown);
 
 console.log(db_name);
 console.log(db_pw);
 //db_pw.setAttribute(":invalid", true);
 
-function onKeyDown(event) {
+function onKeyDown(event: Event) {
     console.log("Taste: " + db_pw.value);
     validatePassword();
 }

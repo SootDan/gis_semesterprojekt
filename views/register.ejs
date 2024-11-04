@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= locale %>">
     <%- include("templates/head") %>
     <body>
-        <script src="<%= scriptPath %>" defer></script>
         <%- include("templates/navbar") %>
         <div class="content">
             <h3><%=__("register_welcome") %></h3>
@@ -88,5 +87,6 @@
                 <input type="submit" value="It's StudyTime!">
             </form>
         </div>
+    <script src="<%= scriptPath %>" defer></script>
     </body>
 </html>
