@@ -27,9 +27,19 @@ Sobald der User seine Datenbank betritt, werden einem die Statistiken der gewäh
 Wenn der User dies will, zeigt StudyTime auch einen "Streak" an, wie viele Tage er hintereinander gelernt hat.  
 
 ## Dokumentation  
-StudyTime läuft ueber TypeScript, und NodeJS (Express, i18n, und Cookie-Parser).  
+StudyTime läuft über TypeScript, und NodeJS (Express, i18n, und Cookie-Parser).  
 `npm run build` transpiliert es zu JS; `npm start` startet src/server.ts.  
-Ich benutze eslint als Linter mit `npx eslint .`.  
+Ich benutze eslint als Linter mit `npx eslint .` . Es ignoriert dist/.  
+MongoDB Server wird mit `sudo systemctl start mongodb.service` gestartet.  
+
+    interface ISubject {
+        name: string;  
+        database: string;
+        time_req: number;
+        time_done: number;
+        deadline: mongoose.Date;
+    }
+
 
 ## Quellen
 ### Bilder
@@ -40,4 +50,5 @@ Ich benutze eslint als Linter mit `npx eslint .`.
 
 ### Code & Guides
 [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)  
-[TS-eslint](https://typescript-eslint.io/)
+[TS-eslint](https://typescript-eslint.io/)  
+[Mongoose](https://mongoosejs.com/docs/typescript.html)

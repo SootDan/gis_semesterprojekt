@@ -2,9 +2,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import i18n from "i18n";
+import Database from "./mongodb";
 
+// Creates Express and MongoDB
 const app = express();
 const port: number = 5000;
+const mongodb = new Database();
+mongodb.startDB();
 
 // Initialize language settings
 i18n.configure({
@@ -52,3 +56,9 @@ app.get("/register", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://127.0.0.1:${port}/`);
 });
+
+// TODO: This is terrible and I hate it.
+(async () => {
+    const subject = await mongodb.findSubject();
+    console.log(subject);
+})();
