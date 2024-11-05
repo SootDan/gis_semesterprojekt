@@ -26,8 +26,18 @@ Sobald der User seine Datenbank betritt, werden einem die Statistiken der gewäh
 ![Das Interface](Assets/InterfaceScreen.png)
 Wenn der User dies will, zeigt StudyTime auch einen "Streak" an, wie viele Tage er hintereinander gelernt hat.  
 
+## Dokumentation  
+StudyTime läuft ueber TypeScript, und NodeJS (Express, i18n, und Cookie-Parser).  
+`npm run build` transpiliert es zu JS; `npm start` startet src/server.ts.  
+Ich benutze eslint als Linter mit `npx eslint .`.  
+
 ## Quellen
+### Bilder
 [Farbenpalette](https://nightpalette.com/)  
 [Free Icons](https://iconoir.com/)  
 [Flaggen (WhatsApp-Version)](https://emojipedia.org/)  
-[StudyTime Logo](https://www.flaticon.com/)
+[StudyTime Logo](https://www.flaticon.com/)    
+
+### Code & Guides
+[Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)  
+[TS-eslint](https://typescript-eslint.io/)
