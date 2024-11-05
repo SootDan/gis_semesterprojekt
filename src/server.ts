@@ -19,7 +19,9 @@ i18n.configure({
 // Middleware
 app.use(cookieParser());
 app.use(i18n.init);
+// FOAC problem solved by caching
 app.use(express.static("public", { maxAge: "1d"}));
+app.use(express.static("dist"));
 app.set("view engine", "ejs");
 
 app.get("/locale/:lang", (req, res) => {
