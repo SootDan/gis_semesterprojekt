@@ -34,29 +34,29 @@
                     </th>
                 </thead>
                 
-                <tbody>
-                    <td>
+                <tbody id="subj_table">
+                    <td id="subj_name">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_time_req">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_time_done">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_time_per_day">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_time_per_week">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_time_per_month">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_deadline">
                         lorem ipsum
                     </td>
-                    <td>
+                    <td id="subj_settings">
                         <select id="db_misc">
                             <option name="db_edit">Edit</option>
                             <option name="db_deadline">Deadline</option>
@@ -65,5 +65,6 @@
                 </tbody>
             </table>
         <%- include("templates/footer") %>
+        <script type="module" src="<%= scriptPath %>" defer></script>
     </body>
 </html>

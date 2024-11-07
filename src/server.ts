@@ -1,14 +1,20 @@
 // Initialize NodeJS libraries
 import express from "express";
+import session from "express-session";
 import cookieParser from "cookie-parser";
 import i18n from "i18n";
-import Database from "./mongodb";
+import Database from "./mongodb.js";
 
-// Creates Express and MongoDB
+// Creates Express + Session and MongoDB
 const app = express();
+const exp_session = {
+    secret: "hello world",
+    cookie: {}
+}
+
 const port: number = 5000;
-const mongodb = new Database();
-mongodb.startDB();
+//const mongodb = new Database();
+Database.startDB();
 
 // Initialize language settings
 i18n.configure({
@@ -23,9 +29,11 @@ i18n.configure({
 // Middleware
 app.use(cookieParser());
 app.use(i18n.init);
-// FOAC problem solved by caching
+// FOAC problem solved by caching, starts sessions
 app.use(express.static("public", { maxAge: "1d"}));
 app.use(express.static("dist"));
+app.use(session(exp_session));
+
 app.set("view engine", "ejs");
 
 app.get("/locale/:lang", (req, res) => {
@@ -35,12 +43,6 @@ app.get("/locale/:lang", (req, res) => {
 });
 
 // Renders all pages in array
-const pages: Array<string> = ["login", "settings", "landing"];
-pages.forEach(page => {
-    app.get(`/${page}`, (req, res) =>
-        res.render(page));
-});
-
 app.get("/", (req, res) => {
     const lang: string = req.cookies.language;
     if (!lang)
@@ -48,17 +50,14 @@ app.get("/", (req, res) => {
     return res.redirect("/login");
 })
 
-app.get("/register", (req, res) => {
-    res.render("register", { scriptPath: "register.js" });
-})
+const pages: Array<string> = ["login", "landing", "settings", "register"];
+pages.forEach(page => {
+    app.get(`/${page}`, (req, res) => {
+        res.render(page, { scriptPath: `${page}.js` });
+    });
+});
 
 // Create website
 app.listen(port, () => {
     console.log(`Server running at http://127.0.0.1:${port}/`);
 });
-
-// TODO: This is terrible and I hate it.
-(async () => {
-    const subject = await mongodb.findSubject();
-    console.log(subject);
-})();
