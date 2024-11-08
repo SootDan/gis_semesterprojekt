@@ -1,24 +1,21 @@
+
 import mongoose from "mongoose";
-
-/**
- * A single subject and its data.
- */
-
-
 
 /**
  * Starts the MongoDB collection.
  */
-export default class Database {
+export class Database {
     static async startDB() {
-        await mongoose.connect("mongodb://127.0.0.1:27017/test");
-
+        //await mongoose.connect("mongodb://127.0.0.1:27017/test");
+        //connection();
         // TODO: Make an actual schema out of this
         console.log("MongoDB running at mongodb://127.0.0.1:27017/test");
     }
 
     // TODO: Implement functionality
-    async findSubject() {
+    static async findSubject() {
+        await this.startDB();
+
         interface ISubject {
             name: string;
             database: string;
@@ -42,9 +39,15 @@ export default class Database {
             time_req: 135.00,
             time_done: 0.00,
             deadline: new Date(2025, 1, 15)
-        })
-        await subject.save();
+        });
+        //await subject.save();
+        //const subjects = await Subject.find();
+        return subject;
+    }
 
-        return Subject;
+    static print() {
+        console.log("j'existe");
     }
 }
+
+export default Database;

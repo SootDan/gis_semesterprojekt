@@ -3,6 +3,7 @@ import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import i18n from "i18n";
+import mongoose from "mongoose";
 import Database from "./mongodb.js";
 
 // Creates Express + Session and MongoDB
@@ -11,10 +12,12 @@ const exp_session = {
     secret: "hello world",
     cookie: {}
 }
+const mongodb = mongoose.startSession();
 
 const port: number = 5000;
-//const mongodb = new Database();
-Database.startDB();
+export { mongodb };
+//Database.startDB();
+Database.findSubject();
 
 // Initialize language settings
 i18n.configure({
