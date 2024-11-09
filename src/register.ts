@@ -6,7 +6,7 @@ const submit_button: HTMLInputElement = document.getElementById("submit_register
 addEventListener("input", main);
 
 const subjects: HTMLTableElement = document.querySelector("#subject_creator") as HTMLTableElement;
-let toggleSubjects: boolean = false;
+let toggleSubjects = false;
 
 /**
  * Check if a DB name is valid.
@@ -47,10 +47,10 @@ function createSubjects() {
         subj_name.setAttribute("id", `subj_name${i}`);
 
         const subjects_attr = ["subj_name", "subj_req_time", "subj_deadline"];
-        for (let j = 0; j < subjects_attr.length; j++) {
+        for (const subj of subjects_attr) {
             const td = document.createElement("td");
             const input = document.createElement("input");
-            input.setAttribute("id", `${subjects_attr[j]}${i}`);
+            input.setAttribute("id", `${subj}${i}`);
             td.appendChild(input);
             tr.appendChild(td);
         }

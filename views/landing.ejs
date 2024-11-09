@@ -2,10 +2,10 @@
 <html lang="<%= locale %>">
     <%- include("templates/head") %>
     <body>
+        <div id="accountInfo" data-info="<%= JSON.stringify(database) %>"></div>
         <%- include("templates/navbar") %>
         <!--TODO: Add JS to detect time of day and have dynamic greeting -->
-        <h3><%=__("greeting_morning") %>, %user!</h2>
-        
+        <h3><%=__("greeting_morning") %>, <%= database.name %></h2>
             <table>
                 <thead>
                     <th>
