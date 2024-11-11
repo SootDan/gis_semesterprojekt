@@ -9,6 +9,8 @@ import Database from "./persistence";
 const app = express();
 const exp_session = {
     secret: "hello world",
+    resave: false,
+    saveUninitialized: true,
     cookie: {}
 }
 const port = 5000;
