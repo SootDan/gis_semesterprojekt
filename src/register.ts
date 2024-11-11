@@ -2,7 +2,7 @@ const db_name: HTMLInputElement = document.querySelector("#db_name") as HTMLInpu
 const db_pw: HTMLInputElement = document.querySelector("#db_pw") as HTMLInputElement;
 const db_pw_repeat: HTMLInputElement = document.getElementById("db_pw_repeat") as HTMLInputElement;
 
-const submit_button: HTMLInputElement = document.getElementById("submit_register") as HTMLInputElement;
+//TODO: const submit_button: HTMLInputElement = document.getElementById("submit_register") as HTMLInputElement;
 addEventListener("input", main);
 
 const subjects: HTMLTableElement = document.querySelector("#subject_creator") as HTMLTableElement;

@@ -5,7 +5,7 @@ Daniel Benjamin Georg (277 055)
 ## Projektidee
 Eine Web-Version basiert auf ein vorherigen Projekt namens [StudyTime](https://github.com/SootDan/StudyTime). Das Projekt wird als Web-Applikation mit NodeJS komplett neu geschrieben.  
 Die App wird benutzt zum Produktivitätsmanagement eines Studiensemesters. Man kann eine Deadline setzen. Setzt man eine Deadline, wird einem vorgegeben, wie viele Stunden pro Tag/Woche/Monat noch gelernt werden muss. Die Statistiken richten sich am SPO. Man kann jedoch auch eine StudyTime-Datenbank für persönliche Zwecke einsetzen.  
-Es wird gerechnet, wie viel Lernzeit dieses Semester noch benötigt wird. Man kann aus mehreren SQL-Datenbanken auswählen; sie sind passwortgeschützt, damit andere User nicht die Daten von anderen verändern können.  
+Es wird gerechnet, wie viel Lernzeit dieses Semester noch benötigt wird. Man kann aus mehreren MongoDB-Datenbanken auswählen; sie sind passwortgeschützt, damit andere User nicht die Daten von anderen verändern können.  
 Man darf die Sprache entweder auf Deutsch oder Englisch setzen; die Settings werden in einem Cookie gespeichert.  
 
 ## User Experience
@@ -27,18 +27,30 @@ Sobald der User seine Datenbank betritt, werden einem die Statistiken der gewäh
 Wenn der User dies will, zeigt StudyTime auch einen "Streak" an, wie viele Tage er hintereinander gelernt hat.  
 
 ## Dokumentation  
-StudyTime läuft über TypeScript, und NodeJS (Express, i18n, und Cookie-Parser). Packages werden von package-lock.json mit `npm ci` installiert.  
+StudyTime läuft über TypeScript, und NodeJS (Express/Express-Session, i18n, MongoDB, und Cookie-Parser). Packages werden von package-lock.json mit `npm ci` installiert.  
 `npm run build` transpiliert es zu JS; `npm start` startet src/server.ts.  
 Ich benutze eslint als Linter mit `npx eslint .` . Es ignoriert dist/.  
 MongoDB Server wird mit `sudo systemctl start mongodb.service` gestartet.  
 
-    interface ISubject {
-        name: string;  
-        database: string;
-        time_req: number;
+    interface User {
+    name: string;
+    password: string;
+    subjects: Subjects[];
+    };
+
+    interface StudyTime {
         time_done: number;
-        deadline: mongoose.Date;
-    }
+        date: Date;
+    };
+
+    export class Subjects {
+        name: string;
+        time_req: number;
+        time_done?: number;
+        has_deadline: boolean;
+        deadline?: Date;
+        study_time?: StudyTime[];  
+    }    
 
 
 ## Quellen

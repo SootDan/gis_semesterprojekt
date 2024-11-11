@@ -6,16 +6,29 @@ import { MongoClient } from "mongodb";
 interface User {
     name: string;
     password: string;
-    subject_number: number;
     subjects: Subjects[];
-}
+};
 
-export interface Subjects {
+interface StudyTime {
+    time_done: number;
+    date: Date;
+};
+
+export class Subjects {
     name: string;
     time_req: number;
-    time_done: number;
+    time_done?: number;
     has_deadline: boolean;
-    deadline: Date;
+    deadline?: Date;
+    study_time?: StudyTime[];
+
+    constructor(name: string, time_req: number, has_deadline: boolean, deadline?: Date) {
+        this.name = name;
+        this.time_req = time_req;
+        this.has_deadline = has_deadline;
+        if (this.has_deadline)
+            this.deadline = deadline;
+    }
 }
 
 export default class Database {
@@ -32,7 +45,7 @@ export default class Database {
     /**
      * Creates a new account if one with the database doesn't already exist.
      */
-    async createAccount(name: string, password: string, subject_number: number, subjects: Subjects[]) {
+    async createAccount(name: string, password: string, subjects: Subjects[]) {
         const nameExists = await this.accounts.findOne({ name: name });
         if (nameExists)
             return false;
@@ -43,7 +56,6 @@ export default class Database {
                 $setOnInsert: {
                     name: name,
                     password: password,
-                    subject_number: subject_number,
                     subjects: subjects
                 }
             },

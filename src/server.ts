@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/landing", async (req, res) => {
-    const accountInfo = await db.getAccountInfo("test1");
+    const accountInfo = await db.getAccountInfo("test2");
     res.render("landing", { scriptPath: "landing.js", database: accountInfo});
 })
 
@@ -63,9 +63,30 @@ pages.forEach(page => {
 });
 
 // Create website and MongoDB
-app.listen(port, async () => {
+app.listen(port, async() => {
     console.log(`Server running at http://127.0.0.1:${port}/`);
     await db.startDB();
-    await db.createAccount("test1", "test1234", 3, [ {name: "GIS", time_req: 135,
-        time_done: 0, has_deadline: true, deadline: new Date(2025, 2, 15)}]);
+    await db.createAccount("test2", "test1234", [ 
+        {
+            name: "GIS", time_req: 135, has_deadline: true, 
+            deadline: new Date(2025, 2, 15)
+        }, 
+        {
+            name: "CompGraf", time_req: 135, has_deadline: true,
+            deadline: new Date(2025, 2, 15)
+        }, 
+        {
+            name: "MathSim", time_req: 135, has_deadline: false
+        },
+        {
+            name: "UXDesign", time_req: 135, has_deadline: false
+        },
+        {
+            name: "MathSim", time_req: 135, has_deadline: false
+        },
+        {
+            name: "BWL", time_req: 135, has_deadline: true,
+            deadline: new Date(2025, 2, 15)
+        }
+    ]);
 });

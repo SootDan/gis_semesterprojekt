@@ -5,7 +5,7 @@
         <div id="accountInfo" data-info="<%= JSON.stringify(database) %>"></div>
         <%- include("templates/navbar") %>
         <!--TODO: Add JS to detect time of day and have dynamic greeting -->
-        <h3><%=__("greeting_morning") %>, <%= database.name %></h2>
+        <h3><%=__("greeting_morning") %>, <%= database.name %>!</h2>
             <table>
                 <thead>
                     <th>
@@ -35,33 +35,6 @@
                 </thead>
                 
                 <tbody id="subj_table">
-                    <td id="subj_name">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_time_req">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_time_done">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_time_per_day">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_time_per_week">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_time_per_month">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_deadline">
-                        lorem ipsum
-                    </td>
-                    <td id="subj_settings">
-                        <select id="db_misc">
-                            <option name="db_edit">Edit</option>
-                            <option name="db_deadline">Deadline</option>
-                        </select>
-                    </td>
                 </tbody>
             </table>
         <%- include("templates/footer") %>
