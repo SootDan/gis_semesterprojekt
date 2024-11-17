@@ -50,7 +50,8 @@ function createSubjects() {
         for (const subj of subjects_attr) {
             const td = document.createElement("td");
             const input = document.createElement("input");
-            input.setAttribute("id", `${subj}${i}`);
+            input.setAttribute("id", `${subj}_${i}`);
+            input.setAttribute("name", `${subj}_${i}`);
             td.appendChild(input);
             tr.appendChild(td);
         }

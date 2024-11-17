@@ -40,6 +40,10 @@ function createDatabase() {
         subj_tr.setAttribute("id", `subj_${i}`);
     
         const deadline = json.subjects[i].has_deadline;
+        if (deadline) {
+            json.subjects[i].deadline = new Date(json.subjects[i].deadline).toDateString();
+        }
+
         const json_output = [json.subjects[i].name, json.subjects[i].time_req,
             json.subjects[i].time_done, addDeadlineTimers(deadline),
             addDeadlineTimers(deadline), addDeadlineTimers(deadline),

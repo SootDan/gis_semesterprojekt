@@ -3,7 +3,7 @@ import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import i18n from "i18n";
-import Database from "./persistence";
+import Database, { Subjects } from "./persistence";
 
 // Creates Express + Session
 const app = express();
@@ -32,6 +32,8 @@ app.use(i18n.init);
 // FOAC problem solved by caching, starts sessions
 app.use(express.static("public", { maxAge: "1d"}));
 app.use(express.static("dist"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(session(exp_session));
 
 app.set("view engine", "ejs");
@@ -51,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/landing", async (req, res) => {
-    const accountInfo = await db.getAccountInfo("test2");
+    const accountInfo = await db.getAccountInfo("baka");
     res.render("landing", { scriptPath: "landing.js", database: accountInfo});
 })
 
@@ -62,31 +64,29 @@ pages.forEach(page => {
     });
 });
 
+
+app.post("/register", async (req, res) => {
+    const username = req.body.db_name;
+    const password = req.body.db_pw;
+    const subjects = [];
+    for (let i = 0; i < 6; i++) {
+        const subject: Subjects = {
+            name: req.body[`subj_name_${i}`],
+            time_req: req.body[`subj_req_time_${i}`],
+            has_deadline: true,
+        };
+
+        if (subject.has_deadline)
+            subject.deadline = req.body[`subj_deadline_${i}`];
+        subjects.push(subject);
+    }
+    await db.createAccount(username, password, subjects);
+    res.redirect("/login");
+})
+
+
 // Create website and MongoDB
 app.listen(port, async() => {
     console.log(`Server running at http://127.0.0.1:${port}/`);
     await db.startDB();
-    await db.createAccount("test2", "test1234", [ 
-        {
-            name: "GIS", time_req: 135, has_deadline: true, 
-            deadline: new Date(2025, 2, 15)
-        }, 
-        {
-            name: "CompGraf", time_req: 135, has_deadline: true,
-            deadline: new Date(2025, 2, 15)
-        }, 
-        {
-            name: "MathSim", time_req: 135, has_deadline: false
-        },
-        {
-            name: "UXDesign", time_req: 135, has_deadline: false
-        },
-        {
-            name: "MathSim", time_req: 135, has_deadline: false
-        },
-        {
-            name: "BWL", time_req: 135, has_deadline: true,
-            deadline: new Date(2025, 2, 15)
-        }
-    ]);
 });
