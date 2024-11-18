@@ -10,26 +10,27 @@ interface User {
 };
 
 interface StudyTime {
-    time_done: number;
+    timeDone: number;
     date: Date;
 };
 
 export class Subjects {
     name: string;
-    time_req: number;
-    time_done?: number;
-    has_deadline: boolean;
+    timeReq: number;
+    timeDone?: number;
+    hasDeadline: boolean;
     deadline?: Date;
-    study_time?: StudyTime[];
+    studyTime?: StudyTime[];
 
     constructor(name: string, time_req: number, has_deadline: boolean, deadline?: Date) {
         this.name = name;
-        this.time_req = time_req;
-        this.has_deadline = has_deadline;
-        if (this.has_deadline)
+        this.timeReq = time_req;
+        this.hasDeadline = has_deadline;
+        if (this.hasDeadline)
             this.deadline = deadline;
     }
 }
+
 
 export default class Database {
     client = new MongoClient("mongodb://127.0.0.1:27017/test");
@@ -41,6 +42,7 @@ export default class Database {
         console.log("MongoDB Server running at mongodb://127.0.0.1:27017/test");
         await this.client.connect();
     }
+
 
     /**
      * Creates a new account if one with the database doesn't already exist.
@@ -59,8 +61,9 @@ export default class Database {
                     subjects: subjects
                 }
             },
-            { upsert: true}
+            { upsert: true }
         );
+        console.log(`Account ${name} created.`);
         return true;
     }
 
@@ -70,5 +73,14 @@ export default class Database {
     async getAccountInfo(name: string) {
         const account = await this.accounts.findOne({name: name});
         return account;
+    }
+
+
+    /**
+     * Checks if a login request is valid.
+     */
+    async loginAccount(name: string, password: string) {
+        const account = await this.accounts.findOne({name: name, password: password});
+        return account !== null;
     }
 }

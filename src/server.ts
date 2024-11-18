@@ -5,16 +5,26 @@ import cookieParser from "cookie-parser";
 import i18n from "i18n";
 import Database, { Subjects } from "./persistence";
 
+
+declare module "express-session" {
+    interface SessionData {
+        accountInfo: string;
+    }
+}
+
 // Creates Express + Session
 const app = express();
 const exp_session = {
+    name: "session",
+    keys: ["accountInfo"],
     secret: "hello world",
     resave: false,
     saveUninitialized: true,
     cookie: {}
 }
 const port = 5000;
-const db: Database = new Database();
+export const db: Database = new Database();
+
 
 // Initialize language settings
 i18n.configure({
@@ -26,7 +36,10 @@ i18n.configure({
     syncFiles: true
 })
 
-// Middleware
+
+/**
+ * Middleware
+ */
 app.use(cookieParser());
 app.use(i18n.init);
 // FOAC problem solved by caching, starts sessions
@@ -44,7 +57,10 @@ app.get("/locale/:lang", (req, res) => {
     res.redirect("/login");
 });
 
-// Renders all pages in array
+
+/**
+ * Renders all pages in array
+ */
 app.get("/", (req, res) => {
     const lang: string = req.cookies.language;
     if (!lang)
@@ -53,11 +69,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/landing", async (req, res) => {
-    const accountInfo = await db.getAccountInfo("baka");
+    const accountInfo = await db.getAccountInfo(req.session.accountInfo? req.session.accountInfo: "");
     res.render("landing", { scriptPath: "landing.js", database: accountInfo});
 })
 
-const pages: string[] = ["login", "landing", "settings", "register"];
+const pages: string[] = ["login", "settings", "register"];
 pages.forEach(page => {
     app.get(`/${page}`, (req, res) => {
         res.render(page, { scriptPath: `${page}.js` });
@@ -65,6 +81,9 @@ pages.forEach(page => {
 });
 
 
+/**
+ * Creates new account.
+ */
 app.post("/register", async (req, res) => {
     const username = req.body.db_name;
     const password = req.body.db_pw;
@@ -72,17 +91,39 @@ app.post("/register", async (req, res) => {
     for (let i = 0; i < 6; i++) {
         const subject: Subjects = {
             name: req.body[`subj_name_${i}`],
-            time_req: req.body[`subj_req_time_${i}`],
-            has_deadline: true,
+            timeReq: req.body[`subj_req_time_${i}`],
+            hasDeadline: true,
         };
 
-        if (subject.has_deadline)
+        if (subject.hasDeadline)
             subject.deadline = req.body[`subj_deadline_${i}`];
         subjects.push(subject);
     }
     await db.createAccount(username, password, subjects);
     res.redirect("/login");
 })
+
+
+/**
+ * Logs the user in and creates a session.
+ */
+app.post("/login", async (req, res) => {
+    const username = req.body.login_db;
+    const password = req.body.login_pw;
+    const isValidAccount: boolean = await db.loginAccount(username, password);
+    if (isValidAccount) {
+        const accountInfo = await db.getAccountInfo(username);
+        req.session.accountInfo = accountInfo? username : "";
+        return res.redirect("landing");
+    }
+    // TODO: Add function that handles when there is no proper login data
+    return res.redirect("/login");
+})
+
+
+//app.post("/landing", async (req, res) => {
+//
+//})
 
 
 // Create website and MongoDB

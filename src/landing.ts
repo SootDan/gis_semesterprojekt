@@ -1,4 +1,4 @@
-const subj_table: HTMLTableElement = document.getElementById("subj_table") as HTMLTableElement;
+const subjTable = document.getElementById("subj_table") as HTMLTableElement;
 const accountInfoElement = document.getElementById('accountInfo');
 const accountInfo = accountInfoElement?.getAttribute("data-info");
 const json = JSON.parse(accountInfo? accountInfo : "");
@@ -19,14 +19,14 @@ function addDeadlineTimers(hasDeadline: boolean) {
  * Creates the options for each subject.
  */
 function createSubjectOptions(): HTMLSelectElement{
-    const subj_select = document.createElement("select") as HTMLSelectElement;
-    const select_options = ["Edit", "Deadline"];
-    select_options.forEach(option => {
-        const subj_option = document.createElement("option") as HTMLOptionElement;
-        subj_option.textContent = option;
-        subj_select.appendChild(subj_option);
+    const subjSelect = document.createElement("select") as HTMLSelectElement;
+    const selectOptions = ["Edit", "Deadline"];
+    selectOptions.forEach(option => {
+        const subjOption = document.createElement("option") as HTMLOptionElement;
+        subjOption.textContent = option;
+        subjSelect.appendChild(subjOption);
     });
-    return subj_select;
+    return subjSelect;
 }
 
 
@@ -36,33 +36,33 @@ function createSubjectOptions(): HTMLSelectElement{
 function createDatabase() {
     // Create a tree column for each subject.
     for (let i = 0; i < json.subjects.length; i++) {
-        const subj_tr: HTMLTableRowElement = document.createElement("tr");
-        subj_tr.setAttribute("id", `subj_${i}`);
+        const subjTr: HTMLTableRowElement = document.createElement("tr");
+        subjTr.setAttribute("id", `subj_${i}`);
     
         const deadline = json.subjects[i].has_deadline;
         if (deadline) {
             json.subjects[i].deadline = new Date(json.subjects[i].deadline).toDateString();
         }
 
-        const json_output = [json.subjects[i].name, json.subjects[i].time_req,
+        const jsonOutput = [json.subjects[i].name, json.subjects[i].time_req,
             json.subjects[i].time_done, addDeadlineTimers(deadline),
             addDeadlineTimers(deadline), addDeadlineTimers(deadline),
             json.subjects[i].deadline];
     
         // Creates the subject rows
         for (let j = 0; j < 8; j++) {
-            const subj_td: HTMLTableCellElement = document.createElement("td");
-            subj_td.setAttribute("id", `subj_${i}_${j}`);
+            const subjTd: HTMLTableCellElement = document.createElement("td");
+            subjTd.setAttribute("id", `subj_${i}_${j}`);
             if (j < 7)
-                subj_td.textContent = json_output[j];
+                subjTd.textContent = jsonOutput[j];
             else
-                subj_td.appendChild(createSubjectOptions());
+                subjTd.appendChild(createSubjectOptions());
     
-            subj_tr.appendChild(subj_td);
+            subjTr.appendChild(subjTd);
         }
     
         // Finishes up subject
-        subj_table.appendChild(subj_tr);
+        subjTable.appendChild(subjTr);
     }
 }
 
