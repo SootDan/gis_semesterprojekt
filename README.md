@@ -50,7 +50,9 @@ MongoDB Server wird mit `sudo systemctl start mongodb.service` gestartet.
         has_deadline: boolean;
         deadline?: Date;
         study_time?: StudyTime[];  
-    }    
+    }  
+Ich fing an, mit Docker zu experimentieren. Ein Container wird erstellt mit `docker-compose up --build -d` und automatisch gestartet. Bei einem Crash restartet der Container einfach.  
+Um meine Container zu überwachen, benutze ich `ducker`.  
 
 
 ## Quellen
@@ -63,4 +65,6 @@ MongoDB Server wird mit `sudo systemctl start mongodb.service` gestartet.
 ### Code & Guides
 [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)  
 [TS-eslint](https://typescript-eslint.io/)  
-[Mongoose](https://mongoosejs.com/docs/typescript.html)
+[MongoDB](https://www.mongodb.com/resources/languages/express-mongodb-rest-api-tutorial)  
+[Containerizing NodeJS with Docker Compose](https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose#step-5-testing-the-application)  
+[Docker / Ducker](https://wiki.archlinux.org/title/Docker)

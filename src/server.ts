@@ -22,7 +22,7 @@ const exp_session = {
     saveUninitialized: true,
     cookie: {}
 }
-const port = 5000;
+const port = 8080;
 export const db: Database = new Database();
 
 

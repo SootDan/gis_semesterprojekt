@@ -1,6 +1,17 @@
 import { MongoClient } from "mongodb";
 
 /**
+ * Takes Docker .env information.
+ */
+const {
+    MONGO_USERNAME,
+    MONGO_PASSWORD,
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+} = process.env;
+
+/**
  * Starts the MongoDB collection.
  */
 interface User {
@@ -33,7 +44,7 @@ export class Subjects {
 
 
 export default class Database {
-    client = new MongoClient("mongodb://127.0.0.1:27017/test");
+    client = new MongoClient(`mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`);
     database = this.client.db("studytime");
     accounts = this.database.collection<User>("account");
     subjects = this.database.collection<Subjects>("subjects");
