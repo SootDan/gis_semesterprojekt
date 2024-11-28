@@ -8,17 +8,13 @@ const json = JSON.parse(accountInfo? accountInfo : "");
  * Handles days, weeks, and months until deadline.
  */
 function addDeadlineTimers(hasDeadline: boolean, deadline?: Date) {
-    if (!hasDeadline)
-        return "N/A";
-    else {
-        const today = new Date().getTime();
-        const future = deadline? deadline.getTime() : today;
-        const timeUntilDeadline = Math.abs(future - today);
-        const daysUntilDeadline = Math.ceil(timeUntilDeadline / (1000 * 3600 * 24));
-        console.log(today);
-        console.log(future);
-        return daysUntilDeadline.toString();
-    }
+    const today = new Date().getTime();
+    const future = deadline? deadline.getTime() : today;
+    const timeUntilDeadline = Math.abs(future - today);
+    const daysUntilDeadline = Math.ceil(timeUntilDeadline / (1000 * 3600 * 24));
+    console.log(today);
+    console.log(future);
+    return daysUntilDeadline.toString();
 }
 
 
@@ -51,7 +47,7 @@ function createDatabase() {
             json.subjects[i].deadline = new Date(json.subjects[i].deadline).toDateString();
         }
 
-        const jsonOutput = [json.subjects[i].name, json.subjects[i].time_req,
+        const jsonOutput = [json.subjects[i].name, json.subjects[i].timeReq,
             json.subjects[i].time_done, addDeadlineTimers(deadline),
             addDeadlineTimers(deadline), addDeadlineTimers(deadline),
             json.subjects[i].deadline];
