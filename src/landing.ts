@@ -7,11 +7,18 @@ const json = JSON.parse(accountInfo? accountInfo : "");
  * This adds the necessary data for a deadline.
  * Handles days, weeks, and months until deadline.
  */
-function addDeadlineTimers(hasDeadline: boolean) {
+function addDeadlineTimers(hasDeadline: boolean, deadline?: Date) {
     if (!hasDeadline)
         return "N/A";
-    else
-        return "TODO: Add timer";
+    else {
+        const today = new Date().getTime();
+        const future = deadline? deadline.getTime() : today;
+        const timeUntilDeadline = Math.abs(future - today);
+        const daysUntilDeadline = Math.ceil(timeUntilDeadline / (1000 * 3600 * 24));
+        console.log(today);
+        console.log(future);
+        return daysUntilDeadline.toString();
+    }
 }
 
 
