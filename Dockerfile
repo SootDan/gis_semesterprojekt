@@ -2,7 +2,7 @@ FROM node:16-alpine
 WORKDIR /home/gis-semesterprojekt
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 

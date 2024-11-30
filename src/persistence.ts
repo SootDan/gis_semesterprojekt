@@ -50,7 +50,7 @@ export default class Database {
     subjects = this.database.collection<Subjects>("subjects");
 
     async startDB() {
-        console.log("MongoDB Server running at mongodb://127.0.0.1:27017/test");
+        console.log("MongoDB Server running in Docker Container!");
         await this.client.connect();
     }
 
@@ -78,12 +78,15 @@ export default class Database {
         return true;
     }
 
+
     /**
      * Gets the info for each account and loads in their subjects.
+     * Hides password from view.
      */
     async getAccountInfo(name: string) {
-        const account = await this.accounts.findOne({name: name});
-        return account;
+        return await this.accounts.findOne(
+            {name: name},
+            { projection: { password: 0 } });
     }
 
 
@@ -91,7 +94,8 @@ export default class Database {
      * Checks if a login request is valid.
      */
     async loginAccount(name: string, password: string) {
-        const account = await this.accounts.findOne({name: name, password: password});
+        const account = await this.accounts.findOne(
+            {name: name, password: password});
         return account !== null;
     }
 }
