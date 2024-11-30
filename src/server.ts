@@ -2,13 +2,17 @@
 import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
+import cookieSession from "cookie-session";
 import i18n from "i18n";
 import Database, { Subjects } from "./persistence";
 
 
 declare module "express-session" {
     interface SessionData {
-        accountInfo: string;
+        databank: string;
+        subjects: Subjects[];
+        locale: string;
+        timeFormat: string;
     }
 }
 
@@ -66,11 +70,14 @@ app.get("/", (req, res) => {
     if (!lang)
         return res.render("index");
     return res.redirect("/login");
-});
+}); 
 
 app.get("/landing", async (req, res) => {
-    const accountInfo = await db.getAccountInfo(req.session.accountInfo? req.session.accountInfo: "");
-    res.render("landing", { scriptPath: "landing.js", database: accountInfo});
+    const databank = req.session.databank? req.session.databank : "";
+    //const accountInfo = await db.getAccountInfo(req.session.databank? req.session.databank: "");
+    const session = new Session(databank);
+    res.cookie("session", session);
+    res.render("landing", { scriptPath: "landing.js"});
 })
 
 const pages: string[] = ["login", "settings", "register"];
@@ -92,7 +99,7 @@ app.post("/register", async (req, res) => {
         const subject: Subjects = {
             name: req.body[`subj_name_${i}`],
             timeReq: req.body[`subj_req_time_${i}`],
-            hasDeadline: true,
+            hasDeadline: req.body[`subj_has_deadline_${i}`],
         };
 
         if (subject.hasDeadline)
@@ -113,7 +120,7 @@ app.post("/login", async (req, res) => {
     const isValidAccount: boolean = await db.loginAccount(username, password);
     if (isValidAccount) {
         const accountInfo = await db.getAccountInfo(username);
-        req.session.accountInfo = accountInfo? username : "";
+        req.session.databank = accountInfo? username : "";
         return res.redirect("landing");
     }
     // TODO: Add function that handles when there is no proper login data

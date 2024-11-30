@@ -29,9 +29,14 @@ function validatePassword(): boolean {
     const doesMatch: boolean = dbPw.value == dbPwRepeat.value;
     const correctSize: boolean = dbPw.value.length >= 6 && dbPw.value.length < 16;
     const responseString = "TODO: Add invalid password string.";
-    (!doesMatch || !correctSize) ? dbPw.setCustomValidity(responseString) : dbPw.setCustomValidity("");
-    (!doesMatch || !correctSize) ? dbPwRepeat.setCustomValidity(responseString) : dbPwRepeat.setCustomValidity("");
-
+    
+    if (!doesMatch || !correctSize) {
+        dbPw.setCustomValidity(responseString);
+        dbPwRepeat.setCustomValidity(responseString);
+    } else {
+        dbPw.setCustomValidity("");
+        dbPwRepeat.setCustomValidity("");
+    }
     return doesMatch && correctSize;
 }
 
@@ -45,10 +50,15 @@ function createSubjects() {
         const subjName = document.createElement("input");
         subjName.setAttribute("id", `subj_name${i}`);
 
-        const subjsAttr = ["subj_name", "subj_req_time", "subj_deadline"];
+        const subjsAttr = ["subj_name", "subj_req_time", "subj_has_deadline", "subj_deadline"];
         for (const subj of subjsAttr) {
             const td = document.createElement("td");
             const input = document.createElement("input");
+            if (subj == "subj_has_deadline")
+                input.setAttribute("type", "checkbox");
+            if (subj == "subj_deadline")
+                input.setAttribute("type", "date");
+
             input.setAttribute("id", `${subj}_${i}`);
             input.setAttribute("name", `${subj}_${i}`);
             td.appendChild(input);
