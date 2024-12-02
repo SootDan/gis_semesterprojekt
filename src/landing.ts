@@ -37,7 +37,7 @@ function timerMath() {
         if (subject === null)
             return;
 
-        let deadlineText = document.getElementById(`subj_${i}_deadline`)?.textContent;
+        const deadlineText = document.getElementById(`subj_${i}_deadline`)?.textContent;
         const deadline: Date = deadlineText? new Date(deadlineText) : noDeadline;
 
         const timeStillNeeded = Number(document.getElementById(`subj_${i}_timeReq`)?.textContent)

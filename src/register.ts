@@ -2,7 +2,6 @@ const dbName = document.querySelector("#db_name") as HTMLInputElement;
 const dbPw = document.querySelector("#db_pw") as HTMLInputElement;
 const dbPwRepeat = document.getElementById("db_pw_repeat") as HTMLInputElement;
 
-//TODO: const submit_button: HTMLInputElement = document.getElementById("submit_register") as HTMLInputElement;
 addEventListener("input", main);
 
 const subjs: HTMLTableElement = document.querySelector("#subject_creator") as HTMLTableElement;
@@ -11,7 +10,6 @@ let toggleSubjs = false;
 
 /**
  * Check if a DB name is valid.
- * TODO: Proper validation.
  */
 function validateDb(): boolean {
     const isValid: boolean = dbName.value != null && dbName.value.length >= 3;
@@ -23,7 +21,6 @@ function validateDb(): boolean {
 
 /**
  * This checks if a password is valid.
- * TODO: Proper validation.
 */
 function validatePassword(): boolean {
     const doesMatch: boolean = dbPw.value == dbPwRepeat.value;

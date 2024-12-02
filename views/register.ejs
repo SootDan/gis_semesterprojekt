@@ -15,7 +15,7 @@
                         <td>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
-                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                <span class="tooltip"><%=__("tooltip_databank") %></br>
                                 </span>
                             </div>
                         </td>
@@ -26,7 +26,7 @@
                         <td>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
-                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                <span class="tooltip"><%=__("tooltip_password") %></br>
                                 </span>
                             </div>
                         </td>
@@ -47,21 +47,21 @@
                         <th><%=__("subject") %>
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
-                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                <span class="tooltip"><%=__("tooltip_subject") %></br>
                                 </span>
                             </div>
                         </th>
                         <th><%=__("time") %> (in <%=__("hours") %>)
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
-                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                <span class="tooltip"><%=__("tooltip_hours") %></br>
                                 </span>
                             </div>
                         </th>
                         <th>Deadline
                             <div class="tooltip_helper">
                                 <input type="button" value="?" class="register_help">
-                                <span class="tooltip">TODO: Tooltip einfuegen </br>
+                                <span class="tooltip"><%=__("tooltip_deadline") %></br>
                                 </span>
                             </div>
                         </th>
@@ -77,4 +77,5 @@
         </div>
     <script src="<%= scriptPath %>" defer></script>
     </body>
+    <%- include("templates/footer") %>
 </html>

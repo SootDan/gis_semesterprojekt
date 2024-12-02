@@ -26,7 +26,7 @@ table {
 }
 
 input:invalid {
-    background-color: #ee7f93;
+    background-color: #5c1f2a;
 }
 
 footer {
@@ -47,6 +47,7 @@ footer {
     width: 100%;
     background-color: #191E29;
     box-sizing: border-box;
+    border-radius: 15px;
     padding-inline: 1%;
 }
 
@@ -60,7 +61,7 @@ footer {
 
 .content {
     text-align: center;
-    max-width: 80%;
+    max-width: 33%;
     margin-left: auto;
     margin-right: auto;
     padding: 1%;   
@@ -68,12 +69,20 @@ footer {
 
 
 /* Interactive Elements */
+input, select, option {
+    border-radius: 5px;
+    color: white;
+    background-color: #191E29;
+    border: 0;
+}
+
 input[type=submit], input[type=button], select, option {
     background-color: #bed3fa;
     background-clip: padding-box;
     border: 1px solid transparent;
     cursor: pointer;
     font-weight: 500;
+    color: #0B0E14;
 }
 
 input[type=submit]:hover {
@@ -94,6 +103,8 @@ input[type=submit]:hover {
     z-index: 1;
     bottom: 5%;
     background-color: #191E29;
+    width: 150px;
+    border-radius: 5px;
 }
 
 .tooltip_helper:hover .tooltip {

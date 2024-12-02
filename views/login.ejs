@@ -18,10 +18,10 @@
                             <input type="password" name="login_pw" id="login_pw" placeholder="<%=__('password') %>..." minlength="3" maxlength="12"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td><input type="submit" name="login_submit" id="login_submit" value="<%=__('login') %>"/></td></tr>
                 </table>
+                <input type="submit" name="login_submit" id="login_submit" value="<%=__('login') %>"/>
             </form>
+            <hr>
             <%=__("prompt_register") %> <a href="/register"><%=__("prompt_register_link") %></a>
         </div>
         <%- include("templates/footer") %>
