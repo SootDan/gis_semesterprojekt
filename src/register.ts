@@ -42,7 +42,7 @@ function validatePassword(): boolean {
  * Creates the form for each subject individually.
  */
 function createSubjects() {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
         const tr = document.createElement("tr");
         const subjName = document.createElement("input");
         subjName.setAttribute("id", `subj_name${i}`);

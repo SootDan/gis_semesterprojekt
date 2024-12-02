@@ -11,14 +11,12 @@ function getDaysUntilDeadline(deadline: Date, timeStillNeeded: number,
     const timeUntilDeadline = Math.abs(future - today);
     const daysUntilDeadline = Math.ceil(timeUntilDeadline / (1000 * 3600 * 24));
     
-    let stats: number;
+    let stats = timeStillNeeded / daysUntilDeadline;
     
-    if (timeUnit == "timeDays")
-        stats = daysUntilDeadline / timeStillNeeded;
-    else if (timeUnit == "timeWeeks")
-        stats = (daysUntilDeadline / 7) / timeStillNeeded;
-    else
-        stats = (daysUntilDeadline / 30) / timeStillNeeded;
+    if (timeUnit == "timeWeeks")
+        stats *= 7;
+    else if (timeUnit == "timeMonths")
+        stats *= 30;
 
     return stats.toFixed(2);
 }
@@ -44,14 +42,14 @@ function timerMath() {
         - Number(document.getElementById(`subj_${i}_timeDone`)?.textContent);
 
         // Start at Hrs/Day and ignore the first entries
-        for (let j = 0; j < timeUnits.length; j++) {
-            const td = document.getElementById(`subj_${i}_${timeUnits[j]}`);
+        for (const unit of timeUnits) {
+            const td = document.getElementById(`subj_${i}_${unit}`);
             if (td === null)
                 return;
             if (deadline == noDeadline)
                 td.textContent = "N/A";
-            else if (td != null)
-                td.textContent = getDaysUntilDeadline(deadline, timeStillNeeded, timeUnits[j]);
+            else
+                td.textContent = getDaysUntilDeadline(deadline, timeStillNeeded, unit);
         }
     }
 }

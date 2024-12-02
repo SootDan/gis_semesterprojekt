@@ -2,7 +2,9 @@
 <html lang="<%= locale %>">
     <%- include("templates/head") %>
     <body>
+        
         <%- include("templates/navbar") %>
+        <div class="content">
         <h3 id="greeting"><%=__("greeting") %>, <%= account.name %>!</h2>
             <table>
                 <thead>
@@ -55,6 +57,7 @@
                     <% }) %>
                 </tbody>
             </table>
+        </div>
         <%- include("templates/footer") %>
         <script type="module" src="<%= scriptPath %>" defer></script>
     </body>

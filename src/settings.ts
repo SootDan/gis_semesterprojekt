@@ -25,5 +25,6 @@ function changeTimeFormat(): string {
  */
 function changeSettings() {
     document.cookie = `language=${changeLang()}`;
+    document.cookie = `timeFormat=${changeTimeFormat()}`;
     location.reload();
 }

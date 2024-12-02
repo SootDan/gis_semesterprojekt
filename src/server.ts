@@ -28,7 +28,7 @@ i18n.configure({
 app.use(cookieParser());
 app.use(i18n.init);
 // FOAC problem solved by caching, starts sessions
-app.use(express.static("public", { maxAge: "1d"}));
+app.use(express.static("public", { maxAge: "1d" }));
 app.use(express.static("dist"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -40,7 +40,9 @@ app.set("view engine", "ejs");
  * Renders all pages in array
  */
 app.get("/locale/:lang", (req, res) => {
-    res.cookie("language", req.params.lang, { maxAge: 900000});
+    res.cookie("language", req.params.lang, { maxAge: 900000 });
+    res.cookie("timeFormat", (req.params.lang == "de" ? "DD.MM.YY" : "MM/DD/YY"), { maxAge: 900000 });
+
     res.setLocale(req.params.lang);
     res.redirect("/login");
 });
@@ -72,7 +74,7 @@ app.post("/register", async (req, res) => {
     const username = req.body.db_name;
     const password = req.body.db_pw;
     const subjects = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
         const subject: Subjects = {
             name: req.body[`subj_name_${i}`],
             timeReq: req.body[`subj_req_time_${i}`],
