@@ -27,5 +27,6 @@
 	"tooltip_hours": "How many hours you want to spend on this subject. You may change this later.",
 	"tooltip_deadline": "If you want a deadline, click on this box. You may change this later.",
 	"options_language_de": "German",
-	"options_language_us": "English"
+	"options_language_us": "English",
+	"change_subject_settings": "Edit Subject"
 }

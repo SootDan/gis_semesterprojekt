@@ -29,7 +29,7 @@
                     <th>
                         Deadline
                     </th>
-                    <th>
+                    <th colspan="2">
                         Misc
                     </th>
                 </thead>
@@ -40,19 +40,27 @@
                     <tr id="subj_<%= i %>">
                         <td id="subj_<%= i %>_name"><%= subject.name %></td>
                         <td id="subj_<%= i %>_timeReq"><%= subject.timeReq %></td>
-                        <td id="subj_<%= i %>_timeDone"></td>
+                        <td id="subj_<%= i %>_timeDone"><%= subject.timeDone %></td>
                         <td id="subj_<%= i %>_timeDays"></td>
                         <td id="subj_<%= i %>_timeWeeks"></td>
                         <td id="subj_<%= i %>_timeMonths"></td>
                         <td id="subj_<%= i %>_deadline"><%= subject.deadline %></td>
 
                         <!-- Creates the options for each subject -->
-                        <td id="subj_<%= i %>_options">
-                            <select>
-                                <option id="subj_<%= i %>_edit">Edit</option>
-                                <option id="subj_<%= i %>_deadline">Deadline</option>
-                            </select>
+                        <td id="subj_<%= i %>_options_0">
+                            <input type="button" value="Edit" id="subj_<%= i %>_edit">
                         </td>
+                        <td id="subj_<%= i %>_options_1">
+                            <input type="button" value="StudyTime" id="subj_<%= i %>_studyTime">
+                        </td>
+                    </tr>
+                    <tr hidden id="subj_<%= i %>_edit_tr" class="subject_edit">
+                        <td><input value="<%= subject.name %>"></td>
+                        <td><input type="number" value="<%= subject.timeReq %>"></td>
+                        <td colspan="3"></td>
+                        <td><input type="checkbox" value="<%= subject.hasDeadline %>"></td>
+                        <td><input type="date" value="<%= subject.deadline %>"></td>
+                        <td colspan="2"><input type="submit" value="<%=__("change_subject_settings") %>"></td>
                     </tr>
                     <% }) %>
                 </tbody>

@@ -1,4 +1,16 @@
 const subjTable = document.getElementById("subj_table") as HTMLTableElement;
+const option1Test = document.getElementById("subj_0_edit") as HTMLInputElement;
+option1Test.addEventListener("click", editSubject);
+
+
+/** Hides/unhides the table row for each subject.
+ * Lets user edit the subject at will.
+ */
+function editSubject() {
+    const getTdSubj = document.getElementById("subj_0_edit_tr") as HTMLTableElement;
+    getTdSubj.hidden = !getTdSubj.hidden;
+}
+
 
 /**
  * This adds the necessary data for a deadline.
@@ -40,6 +52,7 @@ function timerMath() {
 
         const timeStillNeeded = Number(document.getElementById(`subj_${i}_timeReq`)?.textContent)
         - Number(document.getElementById(`subj_${i}_timeDone`)?.textContent);
+        //const timeDone = document.getElementById(`subj_${i}_timeDone`);
 
         // Start at Hrs/Day and ignore the first entries
         for (const unit of timeUnits) {

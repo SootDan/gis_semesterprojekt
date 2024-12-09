@@ -28,5 +28,6 @@
 	"tooltip_hours": "Gebe hier ein, wie viel Stunden Du lernen willst. Du kannst das später ändern.",
 	"tooltip_deadline": "Willst du eine Deadline, klicke auf die Checkbox und setze eine Zeit. Du kannst das später ändern.",
 	"options_language_de": "Deutsch",
-	"options_language_us": "Englisch"
+	"options_language_us": "Englisch",
+	"change_subject_settings": "Subjekt editieren"
 }

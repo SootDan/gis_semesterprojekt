@@ -78,6 +78,7 @@ app.post("/register", async (req, res) => {
         const subject: Subjects = {
             name: req.body[`subj_name_${i}`],
             timeReq: req.body[`subj_req_time_${i}`],
+            timeDone: 0,
             hasDeadline: req.body[`subj_has_deadline_${i}`],
         };
 

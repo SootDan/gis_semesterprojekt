@@ -20,15 +20,20 @@ interface User {
     subjects: Subjects[];
 };
 
-interface StudyTime {
+export class StudyTime {
     timeDone: number;
     date: Date;
+
+    constructor(timeDone: number, date: Date) {
+        this.timeDone = timeDone;
+        this.date = date;
+    }
 };
 
 export class Subjects {
     name: string;
     timeReq: number;
-    timeDone?: number;
+    timeDone: number;
     hasDeadline: boolean;
     deadline?: Date;
     studyTime?: StudyTime[];
@@ -39,6 +44,9 @@ export class Subjects {
         this.hasDeadline = has_deadline;
         if (this.hasDeadline)
             this.deadline = deadline;
+
+        this.studyTime = [{ timeDone: 0, date: new Date() }];
+        this.timeDone = 0;
     }
 }
 
@@ -95,7 +103,7 @@ export default class Database {
      */
     async loginAccount(name: string, password: string) {
         const account = await this.accounts.findOne(
-            {name: name, password: password});
+            { name: name, password: password });
         return account !== null;
     }
 }
