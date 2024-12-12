@@ -40,7 +40,7 @@
                     <tr id="subj_<%= i %>">
                         <td id="subj_<%= i %>_name"><%= subject.name %></td>
                         <td id="subj_<%= i %>_timeReq"><%= subject.timeReq %></td>
-                        <td id="subj_<%= i %>_timeDone"><%= subject.timeDone %></td>
+                        <td id="subj_<%= i %>_timeDone"><%= subject.timeDone || 0 %></td>
                         <td id="subj_<%= i %>_timeDays"></td>
                         <td id="subj_<%= i %>_timeWeeks"></td>
                         <td id="subj_<%= i %>_timeMonths"></td>
@@ -54,7 +54,7 @@
                             <input type="button" value="StudyTime" id="subj_<%= i %>_studyTime">
                         </td>
                     </tr>
-                    <tr hidden id="subj_<%= i %>_edit_tr" class="subject_edit">
+                    <tr id="subj_<%= i %>_edit_tr" class="subject_edit">
                         <td><input value="<%= subject.name %>"></td>
                         <td><input type="number" value="<%= subject.timeReq %>"></td>
                         <td colspan="3"></td>

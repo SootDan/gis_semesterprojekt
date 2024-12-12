@@ -4,6 +4,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.subject_edit {
+    visibility: hidden;
+}
+
+.subject_edit_toggle {
+    visibility: visible;
+}
+
+
 h2 {
     font-size: xx-large;
 }
@@ -110,3 +119,4 @@ input[type=submit]:hover {
 .tooltip_helper:hover .tooltip {
     visibility: visible;
 }
+

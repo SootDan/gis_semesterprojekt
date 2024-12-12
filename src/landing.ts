@@ -7,8 +7,12 @@ option1Test.addEventListener("click", editSubject);
  * Lets user edit the subject at will.
  */
 function editSubject() {
+    // TODO: Add every subject as an option also make it do... anything, really.
     const getTdSubj = document.getElementById("subj_0_edit_tr") as HTMLTableElement;
-    getTdSubj.hidden = !getTdSubj.hidden;
+    if (getTdSubj.classList.contains("subject_edit"))
+        getTdSubj.className = "subject_edit_visible";
+    else
+        getTdSubj.className = "subject_edit";
 }
 
 

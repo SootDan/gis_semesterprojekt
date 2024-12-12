@@ -11,6 +11,7 @@ const {
     MONGO_DB
 } = process.env;
 
+
 /**
  * Starts the MongoDB collection.
  */
@@ -20,23 +21,12 @@ interface User {
     subjects: Subjects[];
 };
 
-export class StudyTime {
-    timeDone: number;
-    date: Date;
-
-    constructor(timeDone: number, date: Date) {
-        this.timeDone = timeDone;
-        this.date = date;
-    }
-};
-
 export class Subjects {
     name: string;
     timeReq: number;
     timeDone: number;
     hasDeadline: boolean;
     deadline?: Date;
-    studyTime?: StudyTime[];
 
     constructor(name: string, time_req: number, has_deadline: boolean, deadline?: Date) {
         this.name = name;
@@ -44,8 +34,6 @@ export class Subjects {
         this.hasDeadline = has_deadline;
         if (this.hasDeadline)
             this.deadline = deadline;
-
-        this.studyTime = [{ timeDone: 0, date: new Date() }];
         this.timeDone = 0;
     }
 }
@@ -93,7 +81,7 @@ export default class Database {
      */
     async getAccountInfo(name: string) {
         return await this.accounts.findOne(
-            {name: name},
+            { name: name },
             { projection: { password: 0 } });
     }
 
@@ -105,5 +93,28 @@ export default class Database {
         const account = await this.accounts.findOne(
             { name: name, password: password });
         return account !== null;
+    }
+
+    async addStudyTime(account: string, subject: string, studyTime: number) {
+        //TODO
+        await this.accounts.updateOne(
+            { 
+                name: account, 
+                "subjects.name": subject
+            },
+            {
+                $inc: { "subjects.$.timeDone": studyTime }
+        });
+        return true;
+    }
+
+    async editSubject(account: string, subject: string) {
+        //TODO
+        await this.accounts.findOne(
+            {
+                name: account,
+                "subjects.name": subject
+            }
+        );
     }
 }
