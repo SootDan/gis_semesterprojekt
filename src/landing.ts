@@ -1,6 +1,6 @@
 const subjTable = document.getElementById("subj_table") as HTMLTableElement;
 const option1Test = document.getElementById("subj_0_edit") as HTMLInputElement;
-option1Test.addEventListener("click", editSubject);
+//option1Test.addEventListener("click", editSubject);
 
 
 /** Hides/unhides the table row for each subject.

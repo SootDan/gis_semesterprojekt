@@ -21,6 +21,7 @@ interface User {
     subjects: Subjects[];
 };
 
+
 export class Subjects {
     name: string;
     timeReq: number;
@@ -95,8 +96,11 @@ export default class Database {
         return account !== null;
     }
 
+
+    /**
+     * Adds study time to a given account.
+     */
     async addStudyTime(account: string, subject: string, studyTime: number) {
-        //TODO
         await this.accounts.updateOne(
             { 
                 name: account, 
@@ -105,15 +109,29 @@ export default class Database {
             {
                 $inc: { "subjects.$.timeDone": studyTime }
         });
-        return true;
     }
 
-    async editSubject(account: string, subject: string) {
-        //TODO
-        await this.accounts.findOne(
+
+    /**
+     * Edits a subject to its new parameters.
+     */
+    async editSubject(account: string, subjectOldName: string, subjectNewName: string, timeReq: number,
+        hasDeadline: boolean, deadline: Date | null) {
+        if (!hasDeadline)
+            deadline = null;
+
+        await this.accounts.updateOne(
             {
                 name: account,
-                "subjects.name": subject
+                "subjects.name": subjectOldName
+            },
+            {
+                $set: {
+                    "subjects.name": subjectNewName,
+                    "subjects.$.timeReq": timeReq,
+                    "subjects.$.hasDeadline": hasDeadline,
+                    "subjects.$.deadline": deadline
+                }
             }
         );
     }

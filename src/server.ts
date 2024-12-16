@@ -57,7 +57,37 @@ app.get("/", (req, res) => {
 app.get("/landing", async (req, res) => {
     const account = req.cookies.account;
     res.render("landing", { account, scriptPath: "landing.js", });
-})
+});
+
+
+/**
+ * This adds the study time for each subject.
+ * Only available through /landing.
+ */
+app.get("/studyTime", async (req, res) => {
+    const account = req.query.account as string;
+    const subject = req.query.subject as string;
+    const time = parseFloat(req.query.time as string);
+    await db.addStudyTime(account, subject, time);
+    res.cookie("account", await db.getAccountInfo(account));
+    return res.redirect("landing");
+});
+
+/** 
+ * This edits a subject.
+ */
+app.get("/editSubject", async (req, res) => {
+    const account = req.query.account as string;
+    const subjectOldName = req.query.subjectOldName as string;
+    const subjectNewName = req.query.subjectNewName as string;
+    const timeReq = parseFloat(req.query.timeReq as string);
+    const hasDeadline = req.query.hasDeadline as unknown as boolean;
+    const deadline = new Date(req.query.deadline as string);
+    await db.editSubject(account, subjectOldName, subjectNewName, timeReq, hasDeadline, deadline);
+    res.cookie("account", await db.getAccountInfo(account));
+    return res.redirect("landing");
+});
+
 
 const pages: string[] = ["login", "settings", "register"];
 pages.forEach(page => {

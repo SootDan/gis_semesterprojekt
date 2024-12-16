@@ -48,19 +48,39 @@
 
                         <!-- Creates the options for each subject -->
                         <td id="subj_<%= i %>_options_0">
-                            <input type="button" value="Edit" id="subj_<%= i %>_edit">
+                            <input type="button" value="Edit" id="subj_<%= i %>_edit" onclick="
+                                const getTdSubj = document.getElementById('subj_<%= i %>_edit_tr');
+                                if (getTdSubj.classList.contains('subject_edit'))
+                                    getTdSubj.className = 'subject_edit_visible';
+                                else
+                                    getTdSubj.className = 'subject_edit';
+                            ">
                         </td>
                         <td id="subj_<%= i %>_options_1">
-                            <input type="button" value="StudyTime" id="subj_<%= i %>_studyTime">
+                            <input type="button" value="StudyTime" id="subj_<%= i %>_studyTime" onclick="
+                                const studyTime = prompt('StudyTime', '');
+                                window.location.href = `/studyTime?account=<%= account.name %>&subject=<%= subject.name %>&time=${studyTime};`
+                                ">
                         </td>
                     </tr>
                     <tr id="subj_<%= i %>_edit_tr" class="subject_edit">
-                        <td><input value="<%= subject.name %>"></td>
-                        <td><input type="number" value="<%= subject.timeReq %>"></td>
+                        <td><input value="<%= subject.name %>" id="subj_<%= i %>_name"></td>
+                        <td><input type="number" value="<%= subject.timeReq %>" id="subj_<%= i %>_timeReq"></td>
                         <td colspan="3"></td>
-                        <td><input type="checkbox" value="<%= subject.hasDeadline %>"></td>
-                        <td><input type="date" value="<%= subject.deadline %>"></td>
-                        <td colspan="2"><input type="submit" value="<%=__("change_subject_settings") %>"></td>
+                        <td><input type="checkbox" value="<%= subject.hasDeadline %>" id="subj_<%= i %>_hasDeadline"></td>
+                        <td><input type="date" value="<%= subject.deadline %>" id="subj_<%= i %>_deadline"></td>
+
+                        <!-- TODO: God had no power in the making of this code. -->
+                        <td colspan="2"><input type="submit" value="<%=__("change_subject_settings") %>" onclick="
+                        const newName = document.getElementById('subj_<%= i %>_name').value || 'noChange';
+                        const timeReq = document.getElementById('subj_<%= i %>_timeReq').value || 'noChange';
+                        const hasDeadline = document.getElementById('subj_<%= i %>_timeReq').checked || 'noChange';
+                        const deadline = document.getElementById('subj_<%= i %>_deadline').value || 'noChange';
+
+                        window.location.href = `/editSubject?account=<%= account.name %>&subjectOldName=<%= subject.name %>&subjectNewName=${
+                            newName}&timeReq=${timeReq}&hasDeadline=${hasDeadline}&deadline=${deadline}`;
+                            ">
+                        </td>
                     </tr>
                     <% }) %>
                 </tbody>
