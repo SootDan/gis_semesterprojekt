@@ -64,18 +64,17 @@
                         </td>
                     </tr>
                     <tr id="subj_<%= i %>_edit_tr" class="subject_edit">
-                        <td><input value="<%= subject.name %>" id="subj_<%= i %>_name"></td>
-                        <td><input type="number" value="<%= subject.timeReq %>" id="subj_<%= i %>_timeReq"></td>
+                        <td><input value="<%= subject.name %>" id="edit_subj_<%= i %>_name"></td>
+                        <td><input type="number" value="<%= subject.timeReq %>" id="edit_subj_<%= i %>_timeReq"></td>
                         <td colspan="3"></td>
-                        <td><input type="checkbox" value="<%= subject.hasDeadline %>" id="subj_<%= i %>_hasDeadline"></td>
-                        <td><input type="date" value="<%= subject.deadline %>" id="subj_<%= i %>_deadline"></td>
+                        <td><input type="checkbox" value="<%= subject.hasDeadline ? 'checked' : '' %>" id="edit_subj_<%= i %>_hasDeadline"></td>
+                        <td><input type="date" value="<%= subject.deadline %>" id="edit_subj_<%= i %>_deadline"></td>
 
-                        <!-- TODO: God had no power in the making of this code. -->
                         <td colspan="2"><input type="submit" value="<%=__("change_subject_settings") %>" onclick="
-                        const newName = document.getElementById('subj_<%= i %>_name').value || 'noChange';
-                        const timeReq = document.getElementById('subj_<%= i %>_timeReq').value || 'noChange';
-                        const hasDeadline = document.getElementById('subj_<%= i %>_timeReq').checked || 'noChange';
-                        const deadline = document.getElementById('subj_<%= i %>_deadline').value || 'noChange';
+                        const newName = document.getElementById('edit_subj_<%= i %>_name').value;
+                        const timeReq = document.getElementById('edit_subj_<%= i %>_timeReq').value;
+                        const hasDeadline = document.getElementById('edit_subj_<%= i %>_timeReq').checked;
+                        const deadline = document.getElementById('edit_subj_<%= i %>_deadline').value;
 
                         window.location.href = `/editSubject?account=<%= account.name %>&subjectOldName=<%= subject.name %>&subjectNewName=${
                             newName}&timeReq=${timeReq}&hasDeadline=${hasDeadline}&deadline=${deadline}`;

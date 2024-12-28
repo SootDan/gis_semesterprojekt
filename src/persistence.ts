@@ -117,8 +117,15 @@ export default class Database {
      */
     async editSubject(account: string, subjectOldName: string, subjectNewName: string, timeReq: number,
         hasDeadline: boolean, deadline: Date | null) {
-        if (!hasDeadline)
-            deadline = null;
+        /*const updateSubj: any = {};
+        if (subjectNewName != subjectOldName)
+            updateSubj["subjects.$.name"] = subjectNewName;
+        if (timeReq !== null) 
+            updateSubj["subjects.$.timeReq"] = timeReq;
+        if (hasDeadline !== null) 
+            updateSubj["subjects.$.hasDeadline"] = hasDeadline;
+        if (deadline !== null) 
+            updateSubj["subjects.$.deadline"] = deadline;*/
 
         await this.accounts.updateOne(
             {
@@ -127,10 +134,10 @@ export default class Database {
             },
             {
                 $set: {
-                    "subjects.name": subjectNewName,
+                    "subjects.$.name": subjectNewName,
                     "subjects.$.timeReq": timeReq,
-                    "subjects.$.hasDeadline": hasDeadline,
-                    "subjects.$.deadline": deadline
+                    //"subjects.$.hasDeadline": hasDeadline,
+                    //"subjects.$.deadline": deadline
                 }
             }
         );

@@ -56,7 +56,6 @@ function timerMath() {
 
         const timeStillNeeded = Number(document.getElementById(`subj_${i}_timeReq`)?.textContent)
         - Number(document.getElementById(`subj_${i}_timeDone`)?.textContent);
-        //const timeDone = document.getElementById(`subj_${i}_timeDone`);
 
         // Start at Hrs/Day and ignore the first entries
         for (const unit of timeUnits) {
