@@ -1,24 +1,9 @@
 const subjTable = document.getElementById("subj_table") as HTMLTableElement;
-const option1Test = document.getElementById("subj_0_edit") as HTMLInputElement;
-//option1Test.addEventListener("click", editSubject);
-
-
-/** Hides/unhides the table row for each subject.
- * Lets user edit the subject at will.
- */
-function editSubject() {
-    // TODO: Add every subject as an option also make it do... anything, really.
-    const getTdSubj = document.getElementById("subj_0_edit_tr") as HTMLTableElement;
-    if (getTdSubj.classList.contains("subject_edit"))
-        getTdSubj.className = "subject_edit_visible";
-    else
-        getTdSubj.className = "subject_edit";
-}
-
 
 /**
  * This adds the necessary data for a deadline.
  * Handles days, weeks, and months until deadline.
+ * Also makes sure the time needed is not exceeded.
  */
 function getDaysUntilDeadline(deadline: Date, timeStillNeeded: number,
     timeUnit: string) {
@@ -33,6 +18,9 @@ function getDaysUntilDeadline(deadline: Date, timeStillNeeded: number,
         stats *= 7;
     else if (timeUnit == "timeMonths")
         stats *= 30;
+
+    if (stats > timeStillNeeded)
+        stats = timeStillNeeded;
 
     return stats.toFixed(2);
 }

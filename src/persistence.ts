@@ -116,30 +116,25 @@ export default class Database {
      * Edits a subject to its new parameters.
      */
     async editSubject(account: string, subjectOldName: string, subjectNewName: string, timeReq: number,
-        hasDeadline: boolean, deadline: Date | null) {
-        /*const updateSubj: any = {};
-        if (subjectNewName != subjectOldName)
-            updateSubj["subjects.$.name"] = subjectNewName;
-        if (timeReq !== null) 
-            updateSubj["subjects.$.timeReq"] = timeReq;
-        if (hasDeadline !== null) 
-            updateSubj["subjects.$.hasDeadline"] = hasDeadline;
-        if (deadline !== null) 
-            updateSubj["subjects.$.deadline"] = deadline;*/
+        hasDeadline: boolean, deadline: Date) {
+        const update: any = {
+            $set: {
+                "subjects.$.name": subjectNewName,
+                "subjects.$.timeReq": timeReq,
+                "subjects.$.hasDeadline": hasDeadline
+            }
+        };
+        if (hasDeadline.toString() === "true" && deadline.toString() !== "Invalid Date")
+            update.$set["subjects.$.deadline"] = deadline.toISOString().split("T")[0];
+        else
+            update.$unset = { "subjects.$.deadline": "" };
 
         await this.accounts.updateOne(
             {
-                name: account,
-                "subjects.name": subjectOldName
+            name: account,
+            "subjects.name": subjectOldName
             },
-            {
-                $set: {
-                    "subjects.$.name": subjectNewName,
-                    "subjects.$.timeReq": timeReq,
-                    //"subjects.$.hasDeadline": hasDeadline,
-                    //"subjects.$.deadline": deadline
-                }
-            }
+            update
         );
     }
 }
